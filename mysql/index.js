@@ -20,6 +20,7 @@ connection.connect(err => {
   }
 })
 
+module.exports = connection
 // 执行数据库语句
 // let sql = 'select * from student'
 // connection.query(sql, (err, results, fields) => {
@@ -56,11 +57,11 @@ connection.connect(err => {
 // })
 
 // 创建表
-let sql5 = 'CREATE TABLE `NewTable` ( `id`  int NOT NULL AUTO_INCREMENT , `name`  varchar(255) NULL ,  `password`  varchar(255) NULL ,  `Email`  varchar(255) NULL , PRIMARY KEY (`id`));'
-connection.query(sql5, (err, results) => {
-  if (err) {
-    console.log('err:', err)
-  } else {
-    console.log('results', results)
-  }
-})
+// let sql5 = 'CREATE TABLE `NewTable` ( `id`  int NOT NULL AUTO_INCREMENT , `name`  varchar(255) NULL ,  `password`  varchar(255) NULL ,  `Email`  varchar(255) NULL , PRIMARY KEY (`id`));'
+// connection.query(sql5, (err, results) => {
+//   if (err) {
+//     console.log('err:', err)
+//   } else {
+//     console.log('results', results)
+//   }
+// })
