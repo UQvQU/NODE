@@ -37,6 +37,15 @@ async function getBookInfo(pageUrl) {
   let title = $('.container .col-a h1').text().trim()
   // 文件大小
   let size = $('.container .col-a dl dd:first-child b').text().trim()
+  if (size.indexOf('MB') != -1) {
+    size = size.substring(0, size.indexOf('M')).trim()
+    size += '000'
+  } else if (size.indexOf('KB') != -1){
+    size = size.substring(0, size.indexOf('K')).trim()
+  } else {
+    size = 0
+  }
+  size = parseInt(size)
   // 文件发布日期
   let date = $('.container .col-a dl dd:nth-child(2)').text()
   date = date.substring(date.indexOf('：') + 1).trim()
@@ -45,9 +54,13 @@ async function getBookInfo(pageUrl) {
   type = type.substring(type.indexOf('：') + 1).trim()
   // 文件下载链接
   let downloadUrl = $('.container .col-a center a').attr('href')
-  // console.log(title, size, date, type, downloadUrl)
+  console.log(title, size, date, type, downloadUrl)
   let info = [title, type, size, date, pageUrl, downloadUrl]
 
+  // 个别格式不正确
+  if (size == '') {
+    return
+  }
   // 插入数据库
   let sql = 'insert into book (title, type, size, date, pageUrl, downloadUrl) values (?, ?, ?, ?, ?, ?)'
   con.query(sql, info, (err, results) => {
@@ -58,6 +71,8 @@ async function getBookInfo(pageUrl) {
     }
   })
 }
+
+// getBookInfo('http://www.daihema.com/r/15573717')
 
 (async () => {
   for (let i = 1; i <= count; i++) {
