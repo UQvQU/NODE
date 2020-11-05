@@ -1,0 +1,1 @@
+(()=>{"use strict";var e;e={name:"thx"},console.log("fn1: ",e)})();
