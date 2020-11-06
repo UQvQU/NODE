@@ -6,6 +6,7 @@ fn1(data)
 
 /**
  * npm i -y  初始化
+ * npm i webpack webpack-cli --save-dev
  * 
  * 开发环境打包命令： webpack 入口文件 -o  输出目录  --mode=development（模式）
 webpack ./src/index.js -o ./dist/development --mode=development
