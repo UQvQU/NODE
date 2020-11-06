@@ -16,6 +16,6 @@ module.exports = {
 }
 
 /**
- * 使用webpack配置文件打包
+ * 使用webpack配置文件打包（全局安装的webpack）
  * 打包命名：webpack
  */
